@@ -7,7 +7,7 @@
 
   let style;
   let styleLinks;
-  let blockHash;
+  let blockHash = "";
 
   function toKebab(str) {
     return str.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);
@@ -46,9 +46,9 @@
   div {
     background-color: var(--bg-color, grey);
     color: var(--fg-color, #111);
-    padding: 20px 80px;
-    height: 100%;
+    padding: 20px;
     transition: all 5s ease;
+    min-height: 100%;
   }
 
   a {
@@ -175,6 +175,6 @@
   <p>
     The background changes color every time a new block in the Ethereum network
     is mined. Last block is
-    <code>{blockHash}</code>
+    <code>{blockHash.substr(0, 6) + '…' + blockHash.substr(62, 4)}</code>
   </p>
 </div>
