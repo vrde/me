@@ -22,7 +22,7 @@
   async function updateStyle(blockNumber) {
     const block = await provider.getBlock(blockNumber);
     blockHash = block.hash;
-    const color = Color("#" + blockHash.substr(2, 6)).darken(0.6);
+    const color = Color("#" + blockHash.substr(2, 6)).darken(0.8);
     style = generateCSSVars({
       bgColor: color.hex(),
       fgColor: color.negate().hex(),
@@ -49,6 +49,7 @@
     padding: 20px;
     transition: all 5s ease;
     min-height: 100%;
+    line-height: 1.5;
   }
 
   div {
@@ -69,21 +70,14 @@
       I'm a freelance software engineer interested in decentralization,
       protocols, networking (not the one with business cards), hardware, and
       open source. This page is an overview on things I work on and care about.
-      Feel free to contact me if you want to know more details.
+      I've been coding since two decades and building products since one.
+      <strong>I'm looking for collaborations to work on projects about privacy,
+        web, decentralization, blockchain, ethereum, solidity, open
+        source.</strong>
     </p>
 
     <h2>Currently working on</h2>
     <ul>
-      <li>
-        Renovating the main
-        <a href="https://github.com/tracking-exposed/web-extension">
-          web extension
-        </a>
-        for
-        <a href="https://tracking.exposed/">Tracking Exposed</a>,
-        an initiative to increase transparency behind personalization
-        algorithms.
-      </li>
 
       <li>
         Hardware and software development for Package Point, a locker system to
@@ -115,9 +109,23 @@
     <h2>Active projects</h2>
     <ul>
       <li>
-        <a href="https://github.com/social-dist0rtion-protocol/thc">THC</a>,
-        a framework to create decentalized treasure hunts.
+        Recently released version 2.0 of the
+        <a href="https://github.com/tracking-exposed/web-extension">
+          web extension
+        </a>
+        for
+        <a href="https://tracking.exposed/">Tracking Exposed</a>,
+        an initiative to increase transparency behind personalization
+        algorithms.
       </li>
+
+      <li>
+        <a href="https://github.com/social-dist0rtion-protocol/thc">THC</a>,
+        a framework to create decentalized treasure hunts. We used it to <a
+          href="https://www.dist0rtion.com/2020/01/30/Planetscape-a-dystopian-escape-game-for-36C3/">create
+          an escape game for 36C3</a>.
+      </li>
+
       <li>
         <a href="https://github.com/vrde/notes/tree/master/zero-carbon">
           Zero carbon providers
@@ -126,6 +134,7 @@
         business on renewable energy and have a commitment towards the
         environment.
       </li>
+
       <li>
         <a href="https://gitcoin.co/grants/127/planet-a">Planet A</a>
         is a
@@ -133,6 +142,7 @@
         to raise awareness on climate change, developed by Social Dist0rtion
         Protocol and LeapDAO.
       </li>
+
       <li>
         <a href="https://github.com/vrde/ethnode">ethnode</a>
         is a zero configuration tool to run a local Ethereum node. It supports
@@ -185,6 +195,9 @@
       </li>
       <li>
         <a href="mailto:agranzot@mailbox.org">email</a>
+      </li>
+      <li>
+        <a href="https://vrde.github.com/cv">Slightly outdated CV</a>
       </li>
     </ul>
 
