@@ -6,8 +6,9 @@
   const provider = ethers.getDefaultProvider();
 
   let style;
-  let styleLinks;
+  let styleShadow;
   let blockHash = "";
+  let color;
 
   function toKebab(str) {
     return str.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);
@@ -22,7 +23,7 @@
   async function updateStyle(blockNumber) {
     const block = await provider.getBlock(blockNumber);
     blockHash = block.hash;
-    const color = Color("#" + blockHash.substr(2, 6)).darken(0.8);
+    color = Color("#" + blockHash.substr(2, 6)).darken(0.8);
     style = generateCSSVars({
       bgColor: color.hex(),
       fgColor: color.negate().hex(),
@@ -33,7 +34,19 @@
     });
   }
 
+  function onOrientation(orientation) {
+    const x = Math.max(Math.min(-orientation.gamma, 20), -20);
+    const y = -Math.max(Math.min(45 - orientation.beta, 20), -20);
+    console.log(x, y);
+    styleShadow = generateCSSVars({
+      shadowX: x + 'px',
+      shadowY: y + 'px',
+      /*rotation: -orientation.gamma + 'deg'*/
+    });
+  }
+
   onMount(async () => {
+    window.addEventListener("deviceorientation", onOrientation, true);
     provider.on("block", updateStyle);
     const blockNumber = await provider.getBlockNumber();
     await updateStyle(blockNumber);
@@ -63,12 +76,13 @@
   }
 
   section {
+    /*transform: rotate(var(--rotation));*/
     padding: 0 20px 10px 20px;
     border: 2px solid rgba(255, 255, 255, .05);
-    box-shadow: 4px 4px rgba(0, 0, 0, .25);
+    box-shadow: var(--shadow-x) var(--shadow-y) 4px 8px rgba(0, 0, 0, .25);
     background: rgba(0, 0, 0, .10);
-    margin-bottom: 20px;
-    transition: box-shadow 1s;
+    margin: 40px auto;
+    /*transition: box-shadow 1s;*/
   }
 
 </style>
@@ -87,7 +101,7 @@
         source.</strong>
     </p>
 
-    <section>
+    <section style={styleShadow}>
       <h2>Currently working on</h2>
       <ul>
 
@@ -118,7 +132,7 @@
       </ul>
     </section>
 
-    <section>
+    <section style={styleShadow}>
       <h2>Active projects</h2>
       <ul>
         <li>
@@ -162,7 +176,7 @@
       </ul>
     </section>
 
-    <section>
+    <section style={styleShadow}>
       <h2>Previous projects</h2>
       <ul>
         <li>
@@ -186,7 +200,7 @@
       </ul>
     </section>
 
-    <section>
+    <section style={styleShadow}>
       <h2>Playing with</h2>
       <ul>
         <li>
@@ -201,7 +215,7 @@
       </ul>
     </section>
 
-    <section>
+    <section style={styleShadow}>
       <h2>Contact</h2>
       <ul>
         <li>
@@ -219,7 +233,7 @@
       </ul>
     </section>
 
-    <section>
+    <section style={styleShadow}>
       <h2>About this site</h2>
       <p>
         The background changes color every time a new block in the Ethereum
