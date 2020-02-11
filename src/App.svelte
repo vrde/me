@@ -35,18 +35,17 @@
   }
 
   function onOrientation(orientation) {
-    const x = Math.max(Math.min(-orientation.gamma, 20), -20);
-    const y = -Math.max(Math.min(45 - orientation.beta, 20), -20);
-    console.log(x, y);
+    const x = Math.max(Math.min(-orientation.gamma, 5), -5);
+    const y = -Math.max(Math.min(45 - orientation.beta, 5), -5);
     styleShadow = generateCSSVars({
       shadowX: x + 'px',
-      shadowY: y + 'px',
-      /*rotation: -orientation.gamma + 'deg'*/
+      shadowY: y + 'px'
+      // rotation: -orientation.gamma + 'deg'
     });
   }
 
   onMount(async () => {
-    window.addEventListener("deviceorientation", onOrientation, true);
+    // window.addEventListener("deviceorientation", onOrientation, true);
     provider.on("block", updateStyle);
     const blockNumber = await provider.getBlockNumber();
     await updateStyle(blockNumber);
@@ -79,9 +78,9 @@
     /*transform: rotate(var(--rotation));*/
     padding: 0 20px 10px 20px;
     border: 2px solid rgba(255, 255, 255, .05);
-    box-shadow: var(--shadow-x) var(--shadow-y) 4px 8px rgba(0, 0, 0, .25);
+    box-shadow: var(--shadow-x, 4px) var(--shadow-y, 4px) rgba(0, 0, 0, .25);
     background: rgba(0, 0, 0, .10);
-    margin: 40px auto;
+    margin: 30px auto;
     /*transition: box-shadow 1s;*/
   }
 
