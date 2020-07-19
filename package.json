@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "devDependencies": {
     "chokidar": "^3.3.1",
-    "prettier": "^1.19.1",
-    "prettier-plugin-svelte": "^0.7.0",
+    "prettier": "^2.0.5",
     "rollup": "^1.31.0",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-livereload": "^1.0.0",
