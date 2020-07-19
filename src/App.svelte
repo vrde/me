@@ -104,6 +104,7 @@
         <li>
           <a href="https://github.com/vrde/saydao/">SayDAO</a>,
           an experiment in facilitating group decision-making in loosely defined communities.
+          Working on it with <a href="https://gregmcmullen.net/">Greg McMullen</a>.
         </li>
 
         <li>
@@ -118,9 +119,7 @@
 
         <li>
           Doing weird^H^H^H^H^Hcreative projects with
-          <a href="https://github.com/social-dist0rtion-protocol">
-            Social Dist0rtion Protocol
-          </a>, a collective from the year 2055.
+          <a href="https://github.com/social-dist0rtion-protocol">Social Dist0rtion Protocol</a>, a collective from the year 2055.
         </li>
       </ul>
     </section>
@@ -136,29 +135,25 @@
         </li>
 
         <li>
-          Recently released version 2.0 of the
+          Version 2.0 of the
           <a href="https://github.com/tracking-exposed/web-extension">
             web extension
           </a>
           for
           <a href="https://tracking.exposed/">Tracking Exposed</a>,
           an initiative to increase transparency behind personalization
-          algorithms.
+          algorithms. (I created also the first version of the extension.)
         </li>
 
         <li>
           <a href="https://github.com/social-dist0rtion-protocol/thc">THC</a>,
             a framework to create decentalized treasure hunts. We used it to
-          <a
-            href="https://www.dist0rtion.com/2020/01/30/Planetscape-a-dystopian-escape-game-for-36C3/">
-            create an escape game for 36C3
-          </a>.
+          <a href="https://www.dist0rtion.com/2020/01/30/Planetscape-a-dystopian-escape-game-for-36C3/">create an escape game for 36C3</a>.
         </li>
 
         <li>
-          <a href="https://github.com/vrde/notes/tree/master/zero-carbon">
-            Zero carbon providers
-          </a>, a collection of providers (VPS, hosting, email, etc.) that run their
+          <a href="https://github.com/vrde/notes/tree/master/zero-carbon">Zero carbon providers</a>,
+          a collection of providers (VPS, hosting, email, etc.) that run their
           business on renewable energy and have a commitment towards the
           environment.
         </li>
