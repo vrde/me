@@ -98,3 +98,7 @@ From their [sustainability page](https://posteo.de/en/site/sustainability):
 > - No greenwashing: Greenpeace Energy does not label power from coal or nuclear sources as green energy and declines to deal in certificate trading such as RECS.
 > - Transparency: Greenpeace Energy openly displays its supply sources for its customers to see.
 > - Promoting new facilities: Within five years at the latest, new customers are supplied with 100% power from facilities that are less than five years old.
+
+## Contribute
+
+This <a href="https://github.com/vrde/notes/tree/master/zero-carbon">list is on GitHub</a>, feel free to open an issue or a PR if you wish to contribute.
