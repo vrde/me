@@ -124,11 +124,6 @@
       >.
     </li>
     <li>
-      <a href="https://left.gallery/">left.gallery</a>is an online gallery that
-      produces and sells downloadable objects since 2015. I'm helping them
-      deploying custom ERC-721 contracts (NFT) for their gallery.
-    </li>
-    <li>
       Version 2.0 of the <a
         href="https://github.com/tracking-exposed/web-extension"
       >
