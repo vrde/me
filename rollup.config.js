@@ -3,6 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
+import css from "rollup-plugin-css-only";
 import rollup_start_dev from "./rollup_start_dev";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -12,7 +13,7 @@ const onwarn = (warning, onwarn) =>
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
 
-const dedupe = importee =>
+const dedupe = (importee) =>
   importee === "svelte" || importee.startsWith("svelte/");
 
 export default {
@@ -21,18 +22,15 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/bundle.js"
+    file: "public/bundle.js",
   },
   plugins: [
     svelte({
-      // enable run-time checks when not in production
-      dev: !production,
-      // we'll extract any component CSS out into
-      // a separate file — better for performance
-      css: css => {
-        css.write("public/bundle.css");
-      }
+      compilerOptions: {
+        dev: !production,
+      },
     }),
+    css({ output: "bundle.css" }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -41,7 +39,7 @@ export default {
     // https://github.com/rollup/rollup-plugin-commonjs
     resolve({
       browser: true,
-      dedupe
+      dedupe,
     }),
     commonjs(),
 
@@ -55,13 +53,13 @@ export default {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser()
+    production && terser(),
   ],
   watch: {
     clearScreen: true,
     chokidar: {
-      usePolling: true
-    }
+      usePolling: true,
+    },
   },
-  onwarn
+  onwarn,
 };

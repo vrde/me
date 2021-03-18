@@ -51,3 +51,7 @@ button:active {
 button:focus {
   border-color: #666;
 }
+
+blockquote {
+  font-style: italic;
+}
