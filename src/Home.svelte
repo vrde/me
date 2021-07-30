@@ -81,6 +81,14 @@
   <h2>Currently working on</h2>
   <ul>
     <li>
+      <a href="https://serenissimo.granzotto.net/">Serenissimo</a> is a bot to notify
+      people living in the Veneto region about new vaccination appointments. Serenissimo
+      sent 125k notifications, has ~5k subscribers, and helped more than 3.5k people
+      finding an appointment. Articles: [Italian](https://www.italian.tech/2021/05/27/news/in_veneto_i_vaccini_si_prenotano_su_telegram-302860961/),
+      [English](https://timdaub.github.io/2021/04/18/vaccination-bot-serenissimo/).
+    </li>
+
+    <li>
       <a href="https://left.gallery/">left.gallery</a> is an online gallery that
       produces and sells downloadable objects since 2015. I'm helping them deploying
       custom ERC-721 contracts (NFT) for their gallery.
@@ -100,14 +108,8 @@
     </li>
 
     <li>
-      Hardware and software development for Package Point, a locker system to
-      speed up delivery and pick-up of parcels.
-    </li>
-
-    <li>
       Doing weird^H^H^H^H^Hcreative projects with <a
-        href="https://github.com/social-dist0rtion-protocol"
-        >Social Dist0rtion Protocol</a
+        href="https://www.dist0rtion.com">Social Dist0rtion Protocol</a
       >, a collective from the year 2055.
     </li>
   </ul>
@@ -166,6 +168,11 @@
 <section>
   <h2>Previous projects</h2>
   <ul>
+    <li>
+      Hardware and software development for Package Point, a locker system to
+      speed up delivery and pick-up of parcels.
+    </li>
+
     <li>
       Protocol design and smart contract development for <a
         href="https://github.com/urbi-mobility/contracts/">Ditto</a
