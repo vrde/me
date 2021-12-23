@@ -218,7 +218,7 @@
   <ul>
     <li><a href="https://twitter.com/vrde">vrde on Twitter</a></li>
     <li><a href="https://github.com/vrde">vrde on GitHub</a></li>
-    <li><a href="mailto:agranzot@mailbox.org">email</a></li>
+    <li><a href="mailto:alberto@granzotto.net">email</a></li>
     <li><a href="https://vrde.github.com/cv">Slightly outdated CV</a></li>
   </ul>
 </section>
