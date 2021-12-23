@@ -81,14 +81,6 @@
   <h2>Currently working on</h2>
   <ul>
     <li>
-      <a href="https://serenissimo.granzotto.net/">Serenissimo</a> is a bot to notify
-      people living in the Veneto region about new vaccination appointments. Serenissimo
-      sent 125k notifications, has ~5k subscribers, and helped more than 3.5k people
-      finding an appointment. Articles: [Italian](https://www.italian.tech/2021/05/27/news/in_veneto_i_vaccini_si_prenotano_su_telegram-302860961/),
-      [English](https://timdaub.github.io/2021/04/18/vaccination-bot-serenissimo/).
-    </li>
-
-    <li>
       <a href="https://left.gallery/">left.gallery</a> is an online gallery that
       produces and sells downloadable objects since 2015. I'm helping them deploying
       custom ERC-721 contracts (NFT) for their gallery.
@@ -119,6 +111,12 @@
   <h2>Active projects</h2>
   <ul>
     <li>
+      <a href="https://github.com/left-gallery/81-horizons/">81 Horizons</a>, a
+      collection of 81 landscapes by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>, stored and
+      rendered fully on-chain. I programmed the smart contract.
+    </li>
+    <li>
       <a href="https://zora.co/000/1690">seasonal amulets</a>, a collection of 4
       lucky poems. I wrote some
       <a href="https://twitter.com/vrde/status/1369043394115366921"
@@ -126,14 +124,19 @@
       >.
     </li>
     <li>
-      Version 2.0 of the <a
-        href="https://github.com/tracking-exposed/web-extension"
-      >
-        web extension
-      </a>
-      for <a href="https://tracking.exposed/">Tracking Exposed</a>, an
-      initiative to increase transparency behind personalization algorithms. (I
-      created also the first version of the extension.)
+      <a href="https://serenissimo.granzotto.net/">Serenissimo</a> is a bot to
+      notify people living in the Veneto region about new vaccination
+      appointments. Serenissimo sent 125k notifications, has ~5k subscribers,
+      and helped <strong>more than 3.5k people</strong>
+      finding an appointment. Articles:
+      <a
+        href="https://www.italian.tech/2021/05/27/news/in_veneto_i_vaccini_si_prenotano_su_telegram-302860961/"
+        >Italian</a
+      >,
+      <a
+        href="https://timdaub.github.io/2021/04/18/vaccination-bot-serenissimo/"
+        >English</a
+      >.
     </li>
 
     <li>
@@ -152,12 +155,6 @@
     </li>
 
     <li>
-      <a href="https://gitcoin.co/grants/127/planet-a">Planet A</a>, a
-      <em>simulation game</em> to raise awareness on climate change, developed by
-      Social Dist0rtion Protocol and LeapDAO.
-    </li>
-
-    <li>
       <a href="https://github.com/vrde/ethnode">ethnode</a>, a zero
       configuration tool to run a local Ethereum node. It supports both
       OpenEthereum and Geth.
@@ -168,6 +165,21 @@
 <section>
   <h2>Previous projects</h2>
   <ul>
+    <li>
+      <a href="https://gitcoin.co/grants/127/planet-a">Planet A</a>, a
+      <em>simulation game</em> to raise awareness on climate change, developed by
+      Social Dist0rtion Protocol and LeapDAO.
+    </li>
+    <li>
+      Version 2.0 of the <a
+        href="https://github.com/tracking-exposed/web-extension"
+      >
+        web extension
+      </a>
+      for <a href="https://tracking.exposed/">Tracking Exposed</a>, an
+      initiative to increase transparency behind personalization algorithms. (I
+      created also the first version of the extension.)
+    </li>
     <li>
       Hardware and software development for Package Point, a locker system to
       speed up delivery and pick-up of parcels.
