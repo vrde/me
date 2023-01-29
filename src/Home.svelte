@@ -118,9 +118,9 @@
     </li>
 
     <li>
-      <a href="https://opensea.io/collection/hyperloop-by-ciceri">Hyperloop</a>
+      <a href="https://hyperloop.umbertociceri.com/">Hyperloop</a>
       (May 2022, Ethereum) by
-      <a href="https://www.newrafael.com/">Umberto Ciceri</a>
+      <a href="https://umbertociceri.com/">Umberto Ciceri</a>
       I developed the smart contracts, and worked on encoding the videos.
     </li>
 
