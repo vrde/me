@@ -20,7 +20,7 @@
 
   const provider = new ethers.providers.InfuraProvider(
     "homestead",
-    "989ce0643d4342db9307f6d3d7c4daaa"
+    "d8576e6686a94673890f22405bfc521b"
   );
 
   let style;
@@ -69,6 +69,13 @@
    */
 </script>
 
+<main {style}>
+  <div>
+    <Header />
+    <Router {routes} />
+  </div>
+</main>
+
 <style>
   main {
     background-color: var(--bg-color, grey);
@@ -89,10 +96,3 @@
     transition: all 5s ease;
   }
 </style>
-
-<main {style}>
-  <div>
-    <Header />
-    <Router {routes} />
-  </div>
-</main>

