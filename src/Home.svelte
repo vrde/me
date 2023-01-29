@@ -333,4 +333,8 @@ onmouseenter='alert(1)'";
     margin: 30px auto;
     /*transition: box-shadow 1s;*/
   }
+
+  pre {
+    overflow: auto;
+  }
 </style>
