@@ -98,7 +98,7 @@
     <li>
       <a href="https://www.decentpoems.art/">Decent Poems</a> (Aug 2022,
       on-chain, Polygon) by
-      <a href="">Nicola</a>
+      <a href="https://www.linkedin.com/in/nicolamiotto/">Nicola</a>
       and me. The project won the
       <a href="https://devpost.com/software/decent-poems">third prize</a> (NFT track).
       I co-developed the smart contract and the dapp for the drop.
