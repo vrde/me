@@ -20,7 +20,7 @@
 
   const provider = new ethers.providers.InfuraProvider(
     "homestead",
-    "d8576e6686a94673890f22405bfc521b"
+    "cef71c1d15634367a332a723b47cf071"
   );
 
   let style;
