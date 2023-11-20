@@ -105,7 +105,9 @@
     </li>
 
     <li>
-      <a href="https://goldinsenneby.com/">Spot Price</a>
+      <a href="https://canopycanopycanopy.com/contents/spot-price/"
+        >Spot Price</a
+      >
       (May 2023, hybrid, Ethereum) by
       <a href="https://goldinsenneby.com/">Goldin+Senneby</a>. I developed the
       smart contract and dapp. The smart contract is an ERC-721 with a
