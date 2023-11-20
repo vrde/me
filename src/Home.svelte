@@ -77,7 +77,7 @@
     <li>
       Doing weird^H^H^H^H^Hcreative projects with <a
         href="https://www.dist0rtion.com">Social Dist0rtion Protocol</a
-      >, a collective from the year 2055.
+      >, a collective from the year 2045.
     </li>
   </ul>
 </section>
@@ -87,7 +87,8 @@
 
   <ul>
     <li>
-      <a href="https://ever.metzger.love/">Ever (Aug 2023, Ethereum)</a> by
+      <a href="https://ever.metzger.love/">Ever (Aug 2023, hybrid, Ethereum)</a>
+      by
       <a href="https://www.amandaemetzger.net/">Amanda E. Metzger</a>. I helped
       improving the security of the smart contract, lower gas usage, and added
       on-chain checks to verify that the data used to mint the token is coming
@@ -99,8 +100,8 @@
         >81 Landscapes</a
       >
       (Aug 2023, on-chain, Ethereum) by
-      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. I developed the
-      smart contract.
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. Private drop. I
+      developed the smart contract.
     </li>
 
     <li>
@@ -193,6 +194,13 @@
   <h2>Other projects</h2>
   <ul>
     <li>
+      <a href="https://fankee.co/">Fankee</a> is a community-driven music label.
+      I developed the smart contracts to manage drops and royality sharing. I
+      worked on this with my buddy
+      <a href="https://www.linkedin.com/in/nicolamiotto/">Nicola</a>.
+    </li>
+
+    <li>
       <a href="https://left.gallery/">left.gallery</a> is an online gallery that
       produces and sells downloadable objects since 2015. I'm helping them deploying
       custom ERC-721 contracts (NFT) for their gallery.
@@ -200,8 +208,8 @@
 
     <li>
       <a href="https://github.com/vrde/saydao/">SayDAO</a>, an experiment in
-      facilitating group decision-making in loosely defined communities. Working
-      on it with
+      facilitating group decision-making in loosely defined communities. I
+      worked on it with
       <a href="https://gregmcmullen.net/">Greg McMullen</a>.
     </li>
 
