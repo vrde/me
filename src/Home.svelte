@@ -87,6 +87,36 @@
 
   <ul>
     <li>
+      <a href="https://ever.metzger.love/">Ever (Aug 2023, Ethereum)</a> by
+      <a href="https://www.amandaemetzger.net/">Amanda E. Metzger</a>. I helped
+      improving the security of the smart contract, lower gas usage, and added
+      on-chain checks to verify that the data used to mint the token is coming
+      from the correct source.
+    </li>
+
+    <li>
+      <a href="https://opensea.io/collection/81-landscapes-by-rafael-rozendaal"
+        >81 Landscapes</a
+      >
+      (Aug 2023, on-chain, Ethereum) by
+      <a href="https://www.newrafael.com/">Rafaël Rozendaal</a>. I developed the
+      smart contract.
+    </li>
+
+    <li>
+      <a href="https://goldinsenneby.com/">Spot Price</a>
+      (May 2023, hybrid, Ethereum) by
+      <a href="https://goldinsenneby.com/">Goldin+Senneby</a>. I developed the
+      smart contract and dapp. The smart contract is an ERC-721 with a
+      customized transfer method that limits how the artwork can be transferred.
+      To understand the context of the artwork, I highly suggest to read the
+      Essay the artist wrote:
+      <a href="https://canopycanopycanopy.com/contents/regions-of-interest"
+        >Regions of Interest</a
+      >.
+    </li>
+
+    <li>
       <a href="https://opensea.io/collection/cabinets-by-rafael-rozendaal"
         >Cabinets</a
       >
