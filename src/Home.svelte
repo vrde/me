@@ -69,11 +69,12 @@
   <h2>Currently working on</h2>
   <ul>
     <li>
-      Smart contract and dApp development for <a href="https://neokingdom.org/"
-        >Neokingdom DAO</a
-      >.
+      <a href="https://propcorn.deeecent.website/">PropCorn</a> is a public good
+      for micro-funding small features. Conceived during the WebZero hackathon,
+      the project won a prize. I worked on this with my buddy
+      <a href="https://www.linkedin.com/in/nicolamiotto/">Nicola</a> and we will
+      continue improving it in the next months.
     </li>
-
     <li>
       Doing weird^H^H^H^H^Hcreative projects with <a
         href="https://www.dist0rtion.com">Social Dist0rtion Protocol</a
@@ -193,8 +194,33 @@
 </section>
 
 <section>
+  <h2>THC works</h2>
+  <p>
+    Together with SDP, I developed several <a
+      href="https://www.dist0rtion.com/2020/01/30/Planetscape-a-dystopian-escape-game-for-36C3/"
+      >Treasure Hunt Challenges</a
+    > for conferences and events.
+  </p>
+  <ul>
+    <li><strong>disappear</strong>, 2024, EthBerlin04</li>
+    <li><strong>???</strong>, 2023, 37c3</li>
+    <li><strong>No time to DAI</strong>, 2022, DevCon6</li>
+    <li><strong>No time to DAI</strong>, 2022, EthBerlin03</li>
+    <li><strong>2121</strong>, 2020, CCC (online)</li>
+    <li><strong>Planetscape</strong>, 2019, 36c3</li>
+  </ul>
+</section>
+
+<section>
   <h2>Other projects</h2>
   <ul>
+    <li>
+      <a href="https://neokingdom.org/">Neokingdom DAO</a> was a legal and technical
+      framework to incorporate DAOs in Europe. I worked on this for ~4 years, working
+      with lawyers and translating legal articles to code, and helping lawyers understanding
+      what is feasible and what is not feasible on an EVM blockchain.
+    </li>
+
     <li>
       <a href="https://fankee.co/">Fankee</a> is a community-driven music label.
       I developed the smart contracts to manage drops and royality sharing. I
