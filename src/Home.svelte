@@ -87,8 +87,11 @@
   <h2>NFT works</h2>
 
   <ul>
+<li>
+  <a href="https://rareartwrapper.com">R.A.R.E. Art Wrapper</a> (Jul 2025, Ethereum). I developed and maintain the smart contract and dApp. The wrapper preserves the original metadata of ERC-20 artworks from the R.A.R.E. Art Labs marketplace by converting them to ERC-721 tokens, keeping the provenance. The contract supports wrapping/unwrapping and implements ERC-2981 royalties. Governance is managed by a multisig. <a href="https://x.com/vrde/status/1917956099631972797">Launch tweet</a>. Three wrapped artworks by XCOPY were recently acquired by <a href="https://x.com/Kanbas_/status/1930656187013271985">Kanbas</a>, see my <a href="https://x.com/vrde/status/1930921790559125603">tweet about the acquisition</a>.
+</li>
     <li>
-      <a href="https://ever.metzger.love/">Ever (Aug 2023, hybrid, Ethereum)</a>
+      <a href="https://ever.metzger.love/">Ever</a>  (Aug 2023, hybrid, Ethereum)
       by
       <a href="https://www.amandaemetzger.net/">Amanda E. Metzger</a>. I helped
       improving the security of the smart contract, lower gas usage, and added
@@ -372,8 +375,10 @@ onmouseenter='alert(1)'";
 <section>
   <h2>Contact</h2>
   <ul>
-    <li><a href="https://twitter.com/vrde">vrde on Twitter</a></li>
-    <li><a href="https://github.com/vrde">vrde on GitHub</a></li>
+    <li><a href="https://farcaster.xyz/albi.eth">albi.eth on Farcaster</a></li>
+    <li><a href="https://twitter.com/vrde">albi.eth on Twitter</a></li>
+    <li><a href="https://github.com/vrde">albi.eth on GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/agranzot">Albi on LinkedIn</a></li>
     <li><a href="mailto:alberto@granzotto.net">email</a></li>
     <li><a href="https://vrde.github.com/cv">Slightly outdated CV</a></li>
   </ul>
