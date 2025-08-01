@@ -87,6 +87,9 @@
   <h2>NFT works</h2>
 
   <ul>
+    <li>
+      <strong>Happy Birthday Etherium*</strong> (Jul 2025, on-chain, Ethereum, *misspelling is intentional). A fully on-chain generative SVG NFT for the Etherium 10th anniversary. The artwork evolves over 100 years, slowly fading with each passing day. Minting opened exactly 10 years after the genesis block and stays open for 24h only, with new windows every 10 years until 2125. <a href="https://farcaster.xyz/albi.eth/0x1dab2475">Launch cast</a>, <a href="https://farcaster.xyz/albi.eth/0x6c52f125">technical details</a>. See on <a href="https://etherscan.io/token/0xe63CACD1337Bf20fF1A73cC73a3645667EEd6573#inventory">Etherscan</a>, <a href="https://rarible.com/collection/0xe63cacd1337bf20ff1a73cc73a3645667eed6573">Rarible</a>, <a href="https://opensea.io/collection/happy-birthday-etherium">OpenSea</a>.
+    </li>
 <li>
   <a href="https://rareartwrapper.com">R.A.R.E. Art Wrapper</a> (Jul 2025, Ethereum). I developed and maintain the smart contract and dApp. The wrapper preserves the original metadata of ERC-20 artworks from the R.A.R.E. Art Labs marketplace by converting them to ERC-721 tokens, keeping the provenance. The contract supports wrapping/unwrapping and implements ERC-2981 royalties. Governance is managed by a multisig. <a href="https://x.com/vrde/status/1917956099631972797">Launch tweet</a>. Three wrapped artworks by XCOPY were recently acquired by <a href="https://x.com/Kanbas_/status/1930656187013271985">Kanbas</a>, see my <a href="https://x.com/vrde/status/1930921790559125603">tweet about the acquisition</a>.
 </li>
