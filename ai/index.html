@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alberto Granzotto — AI Workshop</title>
+  <title>Alberto Granzotto: AI Workshop</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,19 @@
       --bg: #242424;
       --bg-dark: #1a1a1a;
       --text: #e8e8e4;
-      --text-muted: #999;
+      --text-muted: #ddd;
       --text-faint: #555;
-      --accent: #ad4baf;
+      --accent: #e765ea;
+      --accent-bg: #9e3ea0;
       --border: #333;
       --border-light: #444;
       --headline: #aaa;
 
       --font-xxl: 3.5rem;
       --font-xl: 2.4rem;
-      --font-lg: 1.6rem;
+      --font-lg: 1.4rem;
       --font-md: 1.25rem;
-      --font-base: 1.05rem;
+      --font-base: 1rem;
       --font-sm: 0.85rem;
       --font-xs: 0.7rem;
     }
@@ -33,6 +34,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      font-size: 20px;
     }
 
     body {
@@ -125,7 +130,7 @@
     }
 
     .hero-who-inner p {
-      font-size: var(--font-lg);
+      font-size: var(--font-md);
       margin-bottom: 1rem;
     }
 
@@ -199,12 +204,26 @@
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       padding: 4rem 0;
+      position: relative;
     }
 
     .promises {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 8px #1a1a1a, 0 0 16px #1a1a1a;
+    }
+
+    .claude-dither {
+      position: absolute;
+      bottom: 0;
+      right: 2rem;
+      width: 256px;
+      height: 256px;
+      image-rendering: pixelated;
+      z-index: 0;
     }
 
     .promises h2 {
@@ -215,23 +234,22 @@
       color: var(--text-muted);
     }
 
-    .promises .item {
-      display: flex;
-      gap: 1.2rem;
+    .promises-list {
+      list-style-type: upper-roman;
+      padding-left: 2rem;
+    }
+
+    .promises-list li {
       padding: 1.5rem 0;
     }
 
-    .promises .icon {
-      flex-shrink: 0;
-      font-size: var(--font-lg);
+    .promises-list li::marker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
       color: var(--accent);
-      width: 2.5rem;
-      text-align: center;
-      line-height: 1;
-      padding-top: 0.2rem;
     }
 
-    .promises .item-text strong {
+    .promises-list strong {
       font-family: 'Newsreader', serif;
       font-size: var(--font-md);
       font-weight: 400;
@@ -241,7 +259,7 @@
       margin-bottom: 0.5rem;
     }
 
-    .promises .item-text p {
+    .promises-list p {
       font-size: var(--font-base);
       color: var(--text-muted);
       line-height: 1.6;
@@ -298,14 +316,17 @@
     .module-number {
       font-family: 'IBM Plex Mono', monospace;
       font-size: var(--font-sm);
-      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 1rem;
     }
 
-    .module--active .module-number {
+    .module-number__label {
       color: var(--accent);
+    }
+
+    .module-number__title {
+      color: var(--text);
     }
 
     .module h3 {
@@ -366,6 +387,48 @@
       font-style: italic;
       color: var(--accent) !important;
       font-size: var(--font-base) !important;
+    }
+
+    .module-details {
+      margin-top: 1rem;
+    }
+
+    .module-details summary {
+      display: inline;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      color: var(--accent);
+      list-style: none;
+    }
+
+    .module-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .module-list {
+      list-style-type: upper-roman;
+      padding-left: 2rem;
+      margin-top: 1rem;
+    }
+
+    .module-list li {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      padding: 0.5rem 0;
+    }
+
+    .module-list li::marker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      color: var(--accent);
+    }
+
+    .module-list strong {
+      color: var(--text);
+      font-weight: 400;
+      font-style: italic;
+      font-family: 'Newsreader', serif;
     }
 
     .module-bullets {
@@ -472,7 +535,7 @@
 
     /* CTA section with purple background */
     .content--cta {
-      background: var(--accent);
+      background: var(--accent-bg);
       padding: 4rem 0;
     }
 
@@ -545,42 +608,17 @@
       font-size: var(--font-md);
       font-weight: 400;
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .contact label {
-      display: block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: var(--font-sm);
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .contact input,
-    .contact textarea {
-      width: 100%;
-      font-family: 'Newsreader', serif;
+    .contact-desc {
       font-size: var(--font-base);
-      background: var(--bg-dark);
-      border: 1px solid var(--border-light);
-      border-radius: 3px;
-      color: var(--text);
-      padding: 0.8rem;
+      color: var(--text-muted);
       margin-bottom: 2rem;
-      outline: none;
-      resize: none;
     }
 
-    .contact input:focus,
-    .contact textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .contact textarea {
-      height: 5rem;
-    }
-
-    .contact button {
+    .contact-btn {
+      display: inline-block;
       font-family: 'IBM Plex Mono', monospace;
       font-size: var(--font-base);
       font-weight: 700;
@@ -589,18 +627,65 @@
       border: none;
       padding: 0.8rem 2rem;
       cursor: pointer;
+      text-decoration: none;
     }
 
-    .contact button:hover {
+    .contact-btn:hover {
       background: var(--accent);
       color: var(--text);
     }
 
-    .contact .followup {
-      font-size: var(--font-sm);
+    /* --- Who --- */
+
+    .who {
+      padding-bottom: 4rem;
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .who h2 {
+      width: 100%;
+    }
+
+    .who-photo {
+      width: 200px;
+      flex-shrink: 0;
+      border-radius: 4px;
+    }
+
+    .who-text {
+      flex: 1;
+    }
+
+    .who h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .who p {
+      font-size: var(--font-base);
       color: var(--text-muted);
-      margin-top: 1rem;
-      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .who a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .who a:hover {
+      text-decoration: underline;
+    }
+
+    .who-links {
+      margin-top: 1.5rem;
     }
 
     /* --- FAQ --- */
@@ -696,7 +781,7 @@
         --font-xl: 1.3rem;
         --font-lg: 1.2rem;
         --font-md: 1.1rem;
-        --font-base: 0.95rem;
+        --font-base: 1rem;
         --font-sm: 0.75rem;
       }
 
@@ -735,14 +820,8 @@
         padding-right: 1rem;
       }
 
-      .promises .item {
-        gap: 0.6rem;
+      .promises-list li {
         padding: 1rem 0;
-      }
-
-      .promises .icon {
-        font-size: var(--font-xl);
-        width: 2rem;
       }
 
       .modules-stack .module {
@@ -752,6 +831,15 @@
 
       .module {
         padding: 0;
+      }
+
+      .who {
+        flex-direction: column;
+      }
+
+      .who-photo {
+        width: 100%;
+        max-width: 300px;
       }
 
       .format-grid {
@@ -771,17 +859,17 @@
     <div class="hero-scroll">
       <div class="hero-headline">
         <div class="hero-headline-inner">
-          <h1>You use AI every day.<br>The output is <em>almost</em> good.<br>I teach you how to fix the <em>almost</em>.</h1>
+          <h1>You use Claude every day.<br>The output is <em>almost</em> good.<br>I teach you how to fix the <em>almost</em>.</h1>
         </div>
       </div>
 
       <div class="hero-who">
         <div class="hero-who-inner">
-          <p><strong>I'm Alberto Granzotto. Software engineer.</strong></p>
-          <p>I had the same problem you have. The AI gives you something that looks right, but it isn't. And you can't figure out why.</p>
-          <p>I got obsessed with solving this. I applied the same discipline I use for software engineering, and what I found is that <em>it's a process problem, not an AI problem</em>.</p>
-          <p>I built a method around that. <em>I use it every day</em>.</p>
-          <p><em>Now I want to teach it to you</em>. Hands-on, 1-on-1, no theory.</p>
+          <h3><strong>I'm Alberto Granzotto.</strong> Software engineer.</h3>
+          <p>I had the same problem you have. Claude gives you something that looks right, but it isn't. And you can't figure out why.</p>
+          <p>I got obsessed with solving this. I applied the same discipline I use for software engineering, and what I found is that <em>it's a process problem, not a Claude problem</em>.</p>
+          <p>I built a method (and tools) I use every day.</p>
+          <p><em>Now I want to teach it to you.</em> Hands-on, 1-on-1, no theory.</p>
         </div>
       </div>
     </div>
@@ -789,49 +877,34 @@
 
   <div class="promises-wrap">
     <section class="promises">
-      <h2>Here's what we fix in 90 minutes.</h2>
-      <p class="module-number">Module 1 &mdash; Better input, better output.</p>
+      <h2>Get the most out of Claude Cowork in 90 minutes.</h2>
+      <p class="module-number"><span class="module-number__label">Module 1</span><br><span class="module-number__title">Better input, better output.</span></p>
 
-      <div class="item">
-        <span class="icon">⊘</span>
-        <div class="item-text">
-          <strong>You stop the edit-fix-edit loop.</strong>
-          <p>You learn to prepare your input before hitting Enter. Most people prompt too fast and spend the next hour fixing. You'll plan first, execute once.</p>
-        </div>
-      </div>
+      <ol class="promises-list">
+        <li>
+          <strong>We set up Claude Cowork together.</strong>
+          <p>Your project folder, your CLAUDE.md, your context. You leave with a workspace that's ready.</p>
+        </li>
+        <li>
+          <strong>You learn the protocol.</strong>
+          <p>Brainstorm, plan, verify, execute. A step-by-step method instead of one-shotting and hoping.</p>
+        </li>
+        <li>
+          <strong>You learn what the AI actually reads.</strong>
+          <p>PDFs, spreadsheets, folders. How to feed data, verify ingestion, catch hallucinations.</p>
+        </li>
+        <li>
+          <strong>You use the right model for the right task.</strong>
+          <p>Sonnet for reading, Opus for thinking. You stop burning tokens on the wrong things.</p>
+        </li>
+        <li>
+          <strong>You leave with a cheat sheet.</strong>
+          <p>The protocol on one side, the common mistakes on the other.</p>
+        </li>
+      </ol>
 
-      <div class="item">
-        <span class="icon">∃</span>
-        <div class="item-text">
-          <strong>The AI finds your blind spots for you.</strong>
-          <p>You let the AI interview you instead of guessing what to include. It asks the questions you didn't think of. Better input, fewer gaps, fewer assumptions.</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <span class="icon">≠</span>
-        <div class="item-text">
-          <strong>You catch hallucinations before they cost you time.</strong>
-          <p>The AI says it read your file. It didn't. You learn to verify what it actually understood before building on top of it.</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <span class="icon">→</span>
-        <div class="item-text">
-          <strong>You get what you want in fewer iterations.</strong>
-          <p>You break the work into steps — brainstorm, plan, then execute. Instead of one-shotting and hoping, you get closer to right the first time.</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <span class="icon">∀</span>
-        <div class="item-text">
-          <strong>You follow the steps tomorrow. No memorizing.</strong>
-          <p>You leave with a cheat sheet. The protocol on one side, the common mistakes on the other. You put it next to your screen and follow it.</p>
-        </div>
-      </div>
     </section>
+    <canvas id="claude-canvas" class="claude-dither"></canvas>
   </div>
 
   <div class="modules-wrap">
@@ -839,19 +912,46 @@
       <h2 class="modules-heading">And here's what comes next.</h2>
 
       <div class="module module--future">
-        <p class="module-number">Module 2 &mdash; Work once, reuse forever.</p>
-        <p>You take how you already work and package it so the AI can do it too. A framework from a book, the way you write, how you break down a problem. Teach it once. It remembers.</p>
+        <p class="module-number"><span class="module-number__label">Module 2</span><br><span class="module-number__title">Connect your tools, reuse your methods.</span></p>
+        <p>You package how you work into skills Claude follows every time. Your own methods, but also stuff other people figured out: negotiation tactics from a book, a copywriting framework, an analysis process. You install them once and Claude uses them on everything. Claude also connects to your email, calendar, and docs.</p>
+        <details class="module-details">
+          <summary>Learn more</summary>
+          <ol class="module-list">
+            <li><strong>Connect your email, calendar, and Drive.</strong> Stop copy-pasting context into every session. Claude reads your actual work.</li>
+            <li><strong>Build skills from how you work.</strong> That analysis you do every week? Teach Claude once. Done in minutes after that.</li>
+            <li><strong>Turn a method into a reusable skill.</strong> Something from a book, a process from a doc. Claude uses it on every project from now on.</li>
+            <li><strong>Set up project files.</strong> Open a project and Claude already knows the background. No warmup.</li>
+          </ol>
+        </details>
       </div>
 
       <div class="module module--future">
-        <p class="module-number">Module 3 &mdash; Everything in its right place.</p>
-        <p>Your notes, projects, and past decisions live in one place. Connected. The AI stops being a stranger every time you open it.</p>
+        <p class="module-number"><span class="module-number__label">Module 3</span><br><span class="module-number__title">Everything in its right place.</span></p>
+        <p>Claude builds your personal knowledge vault in Obsidian. Notes, projects, decisions: structured, connected, searchable. Claude recalls what you said, what you decided, what matters to you. You're not a stranger to Claude anymore.</p>
+        <details class="module-details">
+          <summary>Learn more</summary>
+          <ol class="module-list">
+            <li><strong>Claude builds your vault from a conversation.</strong> You talk, Claude structures. An hour of conversation, months of organizing.</li>
+            <li><strong>Notes linked in a graph.</strong> Ask about a client and Claude pulls up the decision you made six months ago and why.</li>
+            <li><strong>Query your own knowledge.</strong> "What did I decide about pricing last quarter?" You get the answer, not ten documents to sift through.</li>
+            <li><strong>Claude flags what's off.</strong> Last month's decision contradicts this week's plan? Claude catches it.</li>
+          </ol>
+        </details>
       </div>
 
       <div class="module module--future">
-        <p class="module-number">Module 4 &mdash; It runs overnight.</p>
-        <p>You close your laptop. The system keeps going. By morning, yesterday is sorted and today is laid out.</p>
-        <p class="module-kicker">btw that's how I fixed my ADHD.</p>
+        <p class="module-number"><span class="module-number__label">Module 4</span><br><span class="module-number__title">It works while you sleep.</span></p>
+        <p>You close your laptop. The system keeps going. It processes your day, monitors your sources, maintains your vault. By morning you know what happened, what matters, and what to do next.</p>
+        <details class="module-details">
+          <summary>Learn more</summary>
+          <ol class="module-list">
+            <li><strong>Your conversations, processed.</strong> That thing you mentioned at 3pm? Captured, filed, connected to the right project.</li>
+            <li><strong>Links you saved, read.</strong> Five articles stashed during the day. By morning they're summarized and linked to what you're working on.</li>
+            <li><strong>Your sources, filtered.</strong> Claude checks Reddit, RSS, newsletters: pulls out what's relevant to your projects.</li>
+            <li><strong>Your vault, maintained.</strong> Broken links, stale tasks, forgotten threads: cleaned up overnight.</li>
+            <li><strong>Your morning brief.</strong> You open your laptop and know the three things that matter today.</li>
+          </ol>
+        </details>
       </div>
     </div>
   </div>
@@ -869,20 +969,21 @@
 
   <div class="content">
     <section class="contact">
-      <h2>Interested? Get in touch.</h2>
-      <form>
-        <label for="use">What do you use AI for?</label>
-        <input type="text" id="use" name="use">
+      <h2>Interested? Want more information?</h2>
+      <p class="contact-desc">No commitment. Just send me an email and I'll get back to you.</p>
+      <a class="contact-btn" href="mailto:alberto@granzotto.net?subject=Module%201%20-%20AI%20Workshop&body=Hi%20Alberto%2C%0A%0AI'm%20interested%20in%20the%20Module%201%20workshop.%0A%0A">Email me</a>
+    </section>
 
-        <label for="frustration">What's frustrating?</label>
-        <textarea id="frustration" name="frustration"></textarea>
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-
-        <button type="submit">Send</button>
-      </form>
-      <p class="followup">I'll follow up within 24 hours.</p>
+    <section class="who">
+      <h2>Who I am.</h2>
+      <img src="photo.jpg" alt="Alberto Granzotto" class="who-photo">
+      <div class="who-text">
+      <p>I'm Alberto Granzotto. Freelance software engineer, 20+ years.</p>
+      <p>I studied in Padova, Milano, and Southampton, where I worked on semantic web and linked data. My first company was a startup called Urlist, a bookmarking service, in 2012. In 2015 I was a core developer for ascribe, a platform for artists to own digital art the way you own Bitcoin. Nobody was talking about blockchain yet. That pulled me into smart contracts and NFT tools for artists, some of whose work ended up at Centre Pompidou and other museums. I also built a legal framework for DAOs in Estonia that actually runs real companies.</p>
+      <p>I care about privacy, decentralization, and open source, and I do my best to balance that with the reality of private LLMs.</p>
+      <p>These days I'm building two AI products: <a href="https://tellfranko.com">tellfranko.com</a> and <a href="https://mealo.fit">mealo.fit</a>. And I teach what I picked up along the way.</p>
+      <p class="who-links"><a href="https://granzotto.net">granzotto.net</a> · <a href="https://linkedin.com/in/agranzot">LinkedIn</a></p>
+      </div>
     </section>
 
     <section class="faq">
@@ -913,10 +1014,6 @@
         <p class="faq-answer">No. This is not about coding. It's about how you work with AI, regardless of your job.</p>
       </details>
 
-      <details>
-        <summary>Who are you?</summary>
-        <p class="faq-answer">I'm Alberto Granzotto. Freelance software engineer, been coding for two decades. I care about privacy, decentralization, and open source. I've built software for artists, worked in the Ethereum and blockchain space, and spent a lot of time on protocols and networking. Recently I got obsessed with how people use AI and realized most of them are fighting it instead of working with it. So now I teach a method that fixes that. <a href="https://granzotto.net">granzotto.net</a> · <a href="https://linkedin.com/in/agranzot">LinkedIn</a></p>
-      </details>
 
       <details>
         <summary>Can you teach me how to build an app with AI?</summary>
@@ -930,7 +1027,7 @@
 
       <details>
         <summary>What about OpenClaw?</summary>
-        <p class="faq-answer">It's powerful. It's also easy to lose control — leak secrets, run things you didn't intend, give the AI too much freedom. I teach a different approach: still highly automated, but you stay in control. You know what runs, what gets reviewed, and what stays private.</p>
+        <p class="faq-answer">It's powerful. It's also easy to lose control: leak secrets, run things you didn't intend, give the AI too much freedom. I teach a different approach: still highly automated, but you stay in control. You know what runs, what gets reviewed, and what stays private.</p>
       </details>
 
       <details>
@@ -1078,6 +1175,104 @@
       lastCellSize = -1;
       onScroll();
     }
+
+    // Scroll-animated dithered Claude logo
+    (function() {
+      const CLAUDE_PALETTE = [
+        { r: 0x1a, g: 0x1a, b: 0x1a },  // #1a1a1a (--bg-dark)
+        { r: 0xad, g: 0x4b, b: 0xaf }   // accent
+      ];
+
+      const claudeCanvas = document.getElementById('claude-canvas');
+      const cctx = claudeCanvas.getContext('2d');
+      const promisesWrap = claudeCanvas.closest('.promises-wrap');
+
+      let cW, cH, claudeLum;
+      let lastClaudeCellSize = -1;
+      let claudeScrollStart = null;
+
+      function initClaudeCanvas() {
+        cW = claudeCanvas.offsetWidth;
+        cH = claudeCanvas.offsetHeight;
+        claudeCanvas.width = cW;
+        claudeCanvas.height = cH;
+      }
+
+      function buildClaudeLuminance(img) {
+        const tmp = document.createElement('canvas');
+        tmp.width = cW; tmp.height = cH;
+        const tc = tmp.getContext('2d');
+        const scale = Math.max(cW / img.naturalWidth, cH / img.naturalHeight);
+        const sw = cW / scale, sh = cH / scale;
+        const sx = (img.naturalWidth - sw) / 2;
+        const sy = (img.naturalHeight - sh) / 2;
+        tc.drawImage(img, sx, sy, sw, sh, 0, 0, cW, cH);
+        const raw = tc.getImageData(0, 0, cW, cH).data;
+        claudeLum = new Float32Array(cW * cH);
+        for (let i = 0; i < cW * cH; i++) {
+          claudeLum[i] = (raw[i*4] * 0.299 + raw[i*4+1] * 0.587 + raw[i*4+2] * 0.114) / 255;
+        }
+      }
+
+      function renderClaude(cellSize) {
+        if (!claudeLum) return;
+        const cols = Math.ceil(cW / cellSize);
+        const rows = Math.ceil(cH / cellSize);
+        cctx.clearRect(0, 0, cW, cH);
+        for (let gy = 0; gy < rows; gy++) {
+          for (let gx = 0; gx < cols; gx++) {
+            const x0 = gx * cellSize, y0 = gy * cellSize;
+            const x1 = Math.min(x0 + cellSize, cW), y1 = Math.min(y0 + cellSize, cH);
+            let sum = 0, count = 0;
+            for (let py = y0; py < y1; py++)
+              for (let px = x0; px < x1; px++) { sum += claudeLum[py * cW + px]; count++; }
+            const brightness = sum / count;
+            const threshold = BAYER_8[(gy % 8) * 8 + (gx % 8)];
+            const adjusted = Math.max(0, Math.min(1, brightness + (threshold - 0.5) * 0.5));
+            const color = adjusted < 0.5 ? CLAUDE_PALETTE[0] : CLAUDE_PALETTE[1];
+            cctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
+            cctx.fillRect(x0, y0, cellSize, cellSize);
+          }
+        }
+      }
+
+      function onClaudeScroll() {
+        const rect = claudeCanvas.getBoundingClientRect();
+        const visible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (!visible) {
+          claudeScrollStart = null;
+          return;
+        }
+
+        // Record the scroll position when the canvas first becomes visible
+        if (claudeScrollStart === null) {
+          claudeScrollStart = window.scrollY;
+          renderClaude(CELL_MAX);
+          lastClaudeCellSize = CELL_MAX;
+          return;
+        }
+
+        // Animate over 800px of scroll from when it first appeared
+        const scrolled = window.scrollY - claudeScrollStart;
+        const range = 800;
+        const progress = Math.min(Math.max(scrolled / range, 0), 1);
+        const cellSize = Math.max(CELL_MIN, Math.round(CELL_MAX - progress * (CELL_MAX - CELL_MIN)));
+        if (cellSize !== lastClaudeCellSize) {
+          renderClaude(cellSize);
+          lastClaudeCellSize = cellSize;
+        }
+      }
+
+      const claudeImg = new Image();
+      claudeImg.src = 'claude.png';
+      claudeImg.onload = () => {
+        initClaudeCanvas();
+        buildClaudeLuminance(claudeImg);
+        renderClaude(CELL_MAX);
+        window.addEventListener('scroll', onClaudeScroll, { passive: true });
+      };
+    })();
   </script>
 
 </body>
