@@ -1020,7 +1020,8 @@
       const rect = hero.getBoundingClientRect();
       const scrollable = hero.offsetHeight - window.innerHeight;
       if (scrollable <= 0) return;
-      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+      const rawProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+      const progress = Math.min(rawProgress * 1.43, 1); // resolve 30% earlier
 
       // cell size: CELL_MAX at top → CELL_MIN at bottom
       const cellSize = Math.max(CELL_MIN, Math.round(CELL_MAX - progress * (CELL_MAX - CELL_MIN)));
