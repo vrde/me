@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alberto Granzotto — AI Workshop</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #242424;
+      --bg-dark: #1a1a1a;
+      --text: #e8e8e4;
+      --text-muted: #999;
+      --text-faint: #555;
+      --accent: #ad4baf;
+      --border: #333;
+      --border-light: #444;
+      --headline: #aaa;
+
+      --font-xxl: 3.5rem;
+      --font-xl: 2.4rem;
+      --font-lg: 1.6rem;
+      --font-md: 1.25rem;
+      --font-base: 1.05rem;
+      --font-sm: 0.85rem;
+      --font-xs: 0.7rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Newsreader', serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Hero: photo + scrolling text panels --- */
+
+    .hero {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-photo {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      z-index: 0;
+    }
+
+    #dither-canvas {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+    }
+
+    .hero-scroll {
+      position: relative;
+      width: 100%;
+      z-index: 1;
+      margin-top: -100vh; /* pull up over the sticky photo */
+    }
+
+    /* First fold: headline */
+    .hero-headline {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 33vh;
+    }
+
+    .hero-headline-inner {
+      background: var(--bg);
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+    }
+
+    .hero-headline h1 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      font-style: normal;
+      font-size: var(--font-xl);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--headline);
+    }
+
+    .hero-headline h1 em {
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.2em;
+      line-height: 1;
+      vertical-align: baseline;
+      color: var(--text);
+    }
+
+    /* Second fold: who I am */
+    .hero-who {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 5rem;
+    }
+
+    .hero-who-inner {
+      background: var(--bg);
+      padding: 1rem 2rem;
+      max-width: 700px;
+    }
+
+    .hero-who-inner p {
+      font-size: var(--font-lg);
+      margin-bottom: 1rem;
+    }
+
+    .hero-who-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-who-inner em {
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .hero-who-inner p.intro {
+      font-weight: 800;
+      font-size: var(--font-lg);
+    }
+
+    .hero-who-inner .stats {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      line-height: 2.2;
+      color: var(--text-muted);
+      margin: 1.5rem 0;
+    }
+
+    .hero-who-inner .stats span {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero-who-inner p.kicker {
+      font-weight: 800;
+      font-size: var(--font-md);
+      margin-top: 1.5rem;
+    }
+
+    /* Clearfix for float */
+    .hero::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    /* --- Rest of page --- */
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* --- Problem (inside promises section) --- */
+
+    .promises .problem-statement {
+      font-size: var(--font-md);
+      margin-bottom: 1rem;
+      max-width: 700px;
+    }
+
+    .promises .bridge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    /* --- Promises (full-bleed) --- */
+
+    .promises-wrap {
+      background: var(--bg-dark);
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding: 4rem 0;
+    }
+
+    .promises {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .promises h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      color: var(--text-muted);
+    }
+
+    .promises .item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+    }
+
+    .promises .icon {
+      flex-shrink: 0;
+      font-size: var(--font-lg);
+      color: var(--accent);
+      width: 2.5rem;
+      text-align: center;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .promises .item-text strong {
+      font-family: 'Newsreader', serif;
+      font-size: var(--font-md);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .promises .item-text p {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* --- Rhythm breaker --- */
+
+    .breaker {
+      margin-bottom: 6rem;
+      max-width: 700px;
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+
+    .breaker p {
+      font-family: 'Newsreader', serif;
+      font-size: var(--font-lg);
+      font-weight: 200;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .breaker p em {
+      font-style: normal;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+    }
+
+    /* --- Modules --- */
+
+    .modules {
+      margin-bottom: 6rem;
+    }
+
+    .modules h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .module {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .module--active {
+      border-color: var(--accent);
+    }
+
+    .module-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .module--active .module-number {
+      color: var(--accent);
+    }
+
+    .module h3 {
+      font-family: 'Newsreader', serif;
+      font-size: var(--font-lg);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .module--future h3 {
+      color: var(--text);
+    }
+
+    .module p {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .module--future p {
+      color: var(--text);
+    }
+
+    .module-status {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      margin-top: 1rem;
+    }
+
+    .module--active .module-status {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .module--future .module-status {
+      color: var(--text-faint);
+    }
+
+    .module .price {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 1rem;
+    }
+
+    .module .price-note {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .module-kicker {
+      font-style: italic;
+      color: var(--accent) !important;
+      font-size: var(--font-base) !important;
+    }
+
+    .module-bullets {
+      list-style: none;
+      margin: 1rem 0 0;
+      padding: 0;
+    }
+
+    .module-bullets li {
+      font-size: var(--font-base);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0.3rem 0 0.3rem 1.5rem;
+      position: relative;
+    }
+
+    .module-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+    }
+
+    .module-values {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+
+    .module-values li {
+      display: flex;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .module-values .mv-icon {
+      flex-shrink: 0;
+      font-size: var(--font-md);
+      color: var(--accent);
+      width: 1.5rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* Modules full-bleed wrap */
+    .modules-wrap {
+      padding: 4rem 0;
+    }
+
+    .modules-heading {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    /* --- Pricing block --- */
+
+    .pricing {
+      margin-bottom: 3rem;
+    }
+
+    .pricing-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-desc {
+      font-size: var(--font-md);
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .pricing-amount {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-xxl);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .pricing-final {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* CTA section with purple background */
+    .content--cta {
+      background: var(--accent);
+      padding: 4rem 0;
+    }
+
+    .content--cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Modules stacked vertically */
+    .modules-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .modules-stack .module {
+      max-width: 700px;
+      border-color: var(--border);
+    }
+
+    /* Module number inside promises section */
+    .promises .module-number {
+      color: var(--accent);
+      font-size: var(--font-base);
+      margin-bottom: 2rem;
+    }
+
+    /* Future module numbers in accent */
+    .module--future .module-number {
+      color: var(--accent);
+    }
+
+    /* --- Proof --- */
+
+    .proof {
+      margin-bottom: 6rem;
+      max-width: 600px;
+    }
+
+    .proof blockquote {
+      font-size: var(--font-lg);
+      font-weight: 200;
+      font-style: italic;
+      border-left: 3px solid var(--text-faint);
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .proof cite {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      font-style: normal;
+      color: var(--text-muted);
+    }
+
+    /* --- Form --- */
+
+    .contact {
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+      max-width: 500px;
+    }
+
+    .contact h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .contact label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-sm);
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      font-family: 'Newsreader', serif;
+      font-size: var(--font-base);
+      background: var(--bg-dark);
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      color: var(--text);
+      padding: 0.8rem;
+      margin-bottom: 2rem;
+      outline: none;
+      resize: none;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .contact textarea {
+      height: 5rem;
+    }
+
+    .contact button {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      font-weight: 700;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+    }
+
+    .contact button:hover {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .contact .followup {
+      font-size: var(--font-sm);
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* --- FAQ --- */
+
+    .faq {
+      padding-bottom: 4rem;
+      max-width: 700px;
+    }
+
+    .faq h2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-md);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq details:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq summary {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-base);
+      font-weight: 400;
+      color: var(--text);
+      padding: 1.2rem 0;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: '+';
+      font-size: var(--font-md);
+      color: var(--text-faint);
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .faq details[open] summary::after {
+      content: '−';
+    }
+
+    .faq .faq-answer {
+      font-size: var(--font-base);
+      color: var(--text-muted);
+      line-height: 1.6;
+      padding-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    .faq .faq-answer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .faq .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Footer --- */
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .footer p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: var(--font-xs);
+      color: var(--text-faint);
+    }
+
+    /* --- Responsive --- */
+
+    @media (max-width: 700px) {
+      :root {
+        --font-xl: 1.3rem;
+        --font-lg: 1.2rem;
+        --font-md: 1.1rem;
+        --font-base: 0.95rem;
+        --font-sm: 0.75rem;
+      }
+
+      .hero {
+        padding: 0;
+      }
+
+      .hero-headline {
+        padding-bottom: 20vh;
+      }
+
+      .hero-headline-inner {
+        padding: 1rem;
+      }
+
+      .hero-who {
+        min-height: 80vh;
+        align-items: flex-end;
+        padding-bottom: 0;
+      }
+
+      #dither-canvas {
+        width: 100%;
+      }
+
+      .content,
+      .promises,
+      .modules-stack,
+      .content--cta-inner,
+      .footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .modules-stack .module {
+        border: none;
+        padding: 0;
+      }
+
+      .module {
+        padding: 0;
+      }
+
+      .format-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero" id="hero">
+    <div class="hero-photo">
+      <canvas id="dither-canvas"></canvas>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-headline">
+        <div class="hero-headline-inner">
+          <h1>You use AI every day.<br>The output is <em>almost</em> good.<br>I teach you how to fix the <em>almost</em>.</h1>
+        </div>
+      </div>
+
+      <div class="hero-who">
+        <div class="hero-who-inner">
+          <p><strong>I'm Alberto Granzotto. Software engineer.</strong></p>
+          <p>I had the same problem you have. The AI gives you something that looks right, but it isn't. And you can't figure out why.</p>
+          <p>I got obsessed with solving this. I applied the same discipline I use for software engineering, and what I found is that <em>it's a process problem, not an AI problem</em>.</p>
+          <p>I built a method around that. <em>I use it every day</em>.</p>
+          <p><em>Now I want to teach it to you</em>. Hands-on, 1-on-1, no theory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="promises-wrap">
+    <section class="promises">
+      <h2>Here's what we fix in 90 minutes.</h2>
+      <p class="module-number">Module 1 &mdash; Better input, better output.</p>
+
+      <div class="item">
+        <span class="icon">⊘</span>
+        <div class="item-text">
+          <strong>You stop the edit-fix-edit loop.</strong>
+          <p>You learn to prepare your input before hitting Enter. Most people prompt too fast and spend the next hour fixing. You'll plan first, execute once.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="icon">∃</span>
+        <div class="item-text">
+          <strong>The AI finds your blind spots for you.</strong>
+          <p>You let the AI interview you instead of guessing what to include. It asks the questions you didn't think of. Better input, fewer gaps, fewer assumptions.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="icon">≠</span>
+        <div class="item-text">
+          <strong>You catch hallucinations before they cost you time.</strong>
+          <p>The AI says it read your file. It didn't. You learn to verify what it actually understood before building on top of it.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="icon">→</span>
+        <div class="item-text">
+          <strong>You get what you want in fewer iterations.</strong>
+          <p>You break the work into steps — brainstorm, plan, then execute. Instead of one-shotting and hoping, you get closer to right the first time.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="icon">∀</span>
+        <div class="item-text">
+          <strong>You follow the steps tomorrow. No memorizing.</strong>
+          <p>You leave with a cheat sheet. The protocol on one side, the common mistakes on the other. You put it next to your screen and follow it.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modules-wrap">
+    <div class="modules-stack">
+      <h2 class="modules-heading">And here's what comes next.</h2>
+
+      <div class="module module--future">
+        <p class="module-number">Module 2 &mdash; Work once, reuse forever.</p>
+        <p>You take how you already work and package it so the AI can do it too. A framework from a book, the way you write, how you break down a problem. Teach it once. It remembers.</p>
+        <ul class="module-bullets">
+          <li>You pull a framework from a book. The AI uses it from now on.</li>
+          <li>Your writing voice, your analysis method. Taught once.</li>
+          <li>Drop a file in your project folder. The AI reads it before you say anything.</li>
+        </ul>
+      </div>
+
+      <div class="module module--future">
+        <p class="module-number">Module 3 &mdash; Everything in its right place.</p>
+        <p>Your notes, projects, and past decisions live in one place. Connected. The AI stops being a stranger every time you open it.</p>
+        <ul class="module-bullets">
+          <li>What you wrote three months ago is still there and still useful.</li>
+          <li>The AI answers from what you know, not from what it guesses.</li>
+          <li>Nothing in your head that doesn't need to be there.</li>
+        </ul>
+      </div>
+
+      <div class="module module--future">
+        <p class="module-number">Module 4 &mdash; It runs overnight.</p>
+        <p>You close your laptop. The system keeps going. By morning, yesterday is sorted and today is laid out.</p>
+        <ul class="module-bullets">
+          <li>Your day is processed and filed while you sleep.</li>
+          <li>You open your laptop to a clear picture of what matters.</li>
+          <li><span class="module-kicker">btw that's how I fixed my ADHD.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content--cta">
+    <div class="content--cta-inner">
+      <section class="pricing">
+        <p class="pricing-label">Module 1. 90 minutes, 1-on-1.</p>
+        <p class="pricing-desc">You get the method, the cheat sheet, and a different way of working with AI.</p>
+        <p><span class="pricing-amount">&euro;50</span></p>
+        <p class="pricing-final">Price for the first three people. Then it's &euro;250.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="content">
+    <section class="contact">
+      <h2>Interested? Get in touch.</h2>
+      <form>
+        <label for="use">What do you use AI for?</label>
+        <input type="text" id="use" name="use">
+
+        <label for="frustration">What's frustrating?</label>
+        <textarea id="frustration" name="frustration"></textarea>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+
+        <button type="submit">Send</button>
+      </form>
+      <p class="followup">I'll follow up within 24 hours.</p>
+    </section>
+
+    <section class="faq">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Why &euro;50?</summary>
+        <p class="faq-answer">I'm testing this format with real people. I want honest feedback on what works and what doesn't. You get a real session at a fraction of the price. I get to improve the workshop. Fair deal.</p>
+      </details>
+
+      <details>
+        <summary>Is it remote or in person?</summary>
+        <p class="faq-answer">Remote via FaceTime, Zoom, or Google Meet. If you're in Berlin, you can come to my studio or I come to you.</p>
+      </details>
+
+      <details>
+        <summary>What do I need to prepare?</summary>
+        <p class="faq-answer">Nothing. Bring your laptop.</p>
+      </details>
+
+      <details>
+        <summary>What software do we use?</summary>
+        <p class="faq-answer">Claude Cowork. You need at least a Pro subscription. If you don't have one, I can give you a one-week invite.</p>
+      </details>
+
+      <details>
+        <summary>Do I need technical experience?</summary>
+        <p class="faq-answer">No. This is not about coding. It's about how you work with AI, regardless of your job.</p>
+      </details>
+
+      <details>
+        <summary>Who are you?</summary>
+        <p class="faq-answer">I'm Alberto Granzotto. Freelance software engineer, been coding for two decades. I care about privacy, decentralization, and open source. I've built software for artists, worked in the Ethereum and blockchain space, and spent a lot of time on protocols and networking. Recently I got obsessed with how people use AI and realized most of them are fighting it instead of working with it. So now I teach a method that fixes that. <a href="https://granzotto.net">granzotto.net</a> · <a href="https://linkedin.com/in/agranzot">LinkedIn</a></p>
+      </details>
+
+      <details>
+        <summary>Can you teach me how to build an app with AI?</summary>
+        <p class="faq-answer">Yes. I teach vibe coding and how to add guardrails so it doesn't break everything.</p>
+      </details>
+
+      <details>
+        <summary>Can you automate my workflow?</summary>
+        <p class="faq-answer">Yes. If you're doing the same thing every day, I can probably make the AI do it for you.</p>
+      </details>
+
+      <details>
+        <summary>What about OpenClaw?</summary>
+        <p class="faq-answer">It's powerful. It's also easy to lose control — leak secrets, run things you didn't intend, give the AI too much freedom. I teach a different approach: still highly automated, but you stay in control. You know what runs, what gets reviewed, and what stays private.</p>
+      </details>
+
+      <details>
+        <summary>What else can you do?</summary>
+        <p class="faq-answer">I build autonomous sub-agents, custom MCP servers, multi-agent coordination systems. If you need something deeper, let's talk.</p>
+      </details>
+    </section>
+
+    <section class="breaker">
+      <p>I'm not here to tell you <em>you're absolutely right</em>.<br>The AI already does that.</p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>This page isn't indexed. You're here because someone sent you this link.</p>
+  </footer>
+
+  <script>
+    // Bayer 8x8 matrix normalized to 0–1
+    const BAYER_8 = [
+       0, 32,  8, 40,  2, 34, 10, 42,
+      48, 16, 56, 24, 50, 18, 58, 26,
+      12, 44,  4, 36, 14, 46,  6, 38,
+      60, 28, 52, 20, 62, 30, 54, 22,
+       3, 35, 11, 43,  1, 33,  9, 41,
+      51, 19, 59, 27, 49, 17, 57, 25,
+      15, 47,  7, 39, 13, 45,  5, 37,
+      63, 31, 55, 23, 61, 29, 53, 21
+    ].map(v => v / 63);
+
+    // Palette: dark bg + dark green
+    const PALETTE = [
+      { r: 0x24, g: 0x24, b: 0x24 },  // #242424
+      { r: 0xad, g: 0x4b, b: 0xaf }   // #ad4baf
+    ];
+
+    // Cell size range: 32 (top) → 2 (scrolled)
+    const CELL_MAX = 32;
+    const CELL_MIN = 2;
+
+    const canvas = document.getElementById('dither-canvas');
+    const ctx = canvas.getContext('2d');
+    const hero = document.getElementById('hero');
+
+    let luminance = null; // full-res luminance 0–1
+    let W, H;
+    let lastCellSize = -1;
+
+    function initCanvas() {
+      W = canvas.offsetWidth;
+      H = canvas.offsetHeight;
+      canvas.width = W;
+      canvas.height = H;
+    }
+
+    const img = new Image();
+    img.src = 'alberto.jpg';
+    img.onload = () => {
+      initCanvas();
+      buildLuminance();
+      render(CELL_MAX);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize);
+    };
+
+    function buildLuminance() {
+      const tmp = document.createElement('canvas');
+      tmp.width = W; tmp.height = H;
+      const tc = tmp.getContext('2d');
+
+      // cover crop, anchor top center
+      const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+      const sw = W / scale;
+      const sh = H / scale;
+      const sx = (img.naturalWidth - sw) / 2;
+      tc.drawImage(img, sx, 0, sw, sh, 0, 0, W, H);
+
+      const raw = tc.getImageData(0, 0, W, H).data;
+
+      luminance = new Float32Array(W * H);
+      for (let i = 0; i < W * H; i++) {
+        luminance[i] = (raw[i*4] * 0.299 + raw[i*4+1] * 0.587 + raw[i*4+2] * 0.114) / 255;
+      }
+    }
+
+    function onScroll() {
+      const rect = hero.getBoundingClientRect();
+      const scrollable = hero.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+      // cell size: CELL_MAX at top → CELL_MIN at bottom
+      const cellSize = Math.max(CELL_MIN, Math.round(CELL_MAX - progress * (CELL_MAX - CELL_MIN)));
+      if (cellSize !== lastCellSize) {
+        render(cellSize);
+        lastCellSize = cellSize;
+      }
+    }
+
+    function render(cellSize) {
+      if (!luminance) return;
+
+      const cols = Math.ceil(W / cellSize);
+      const rows = Math.ceil(H / cellSize);
+
+      ctx.clearRect(0, 0, W, H);
+
+      for (let gy = 0; gy < rows; gy++) {
+        for (let gx = 0; gx < cols; gx++) {
+          // Average luminance for this cell
+          const x0 = gx * cellSize;
+          const y0 = gy * cellSize;
+          const x1 = Math.min(x0 + cellSize, W);
+          const y1 = Math.min(y0 + cellSize, H);
+
+          let sum = 0;
+          let count = 0;
+          for (let py = y0; py < y1; py++) {
+            for (let px = x0; px < x1; px++) {
+              sum += luminance[py * W + px];
+              count++;
+            }
+          }
+          const brightness = sum / count;
+
+          // Bayer threshold for this grid cell
+          const threshold = BAYER_8[(gy % 8) * 8 + (gx % 8)];
+
+          // Threshold dither: adjust brightness by Bayer offset
+          const adjusted = Math.max(0, Math.min(1, brightness + (threshold - 0.5) * 0.5));
+
+          // Map to palette (2 colors, 50/50 split)
+          const color = adjusted < 0.5 ? PALETTE[0] : PALETTE[1];
+
+          ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
+          ctx.fillRect(x0, y0, cellSize, cellSize);
+        }
+      }
+    }
+
+    function onResize() {
+      initCanvas();
+      buildLuminance();
+      lastCellSize = -1;
+      onScroll();
+    }
+  </script>
+
+</body>
+</html>
