@@ -69,11 +69,18 @@
   <h2>Currently working on</h2>
   <ul>
     <li>
-      <a href="https://propcorn.deeecent.website/">PropCorn</a> is a public good
-      for micro-funding small features. Conceived during the WebZero hackathon,
-      the project won a prize. I worked on this with my buddy
-      <a href="https://www.linkedin.com/in/nicolamiotto/">Nicola</a> and we will
-      continue improving it in the next months.
+      <a href="/ai">AI Workshop</a> — I teach a method to work with AI.
+      90-minute sessions, 1-on-1, hands-on. No theory, no hype.
+    </li>
+    <li>
+      <a href="https://mealo.fit">Mealo</a> — a voice-first food tracking app
+      for people who actually cook. Built with
+      <a href="https://www.linkedin.com/in/michele-bonazza/">Michele</a>.
+    </li>
+    <li>
+      <a href="https://tellfranko.com">TellFranko</a> — a conversational AI
+      survey platform. The AI interviews respondents one at a time, follows up,
+      and gives you insights a form never could.
     </li>
     <li>
       Doing weird^H^H^H^H^Hcreative projects with <a
@@ -223,6 +230,13 @@
 <section>
   <h2>Other projects</h2>
   <ul>
+    <li>
+      <a href="https://propcorn.deeecent.website/">PropCorn</a> is a public good
+      for micro-funding small features. Conceived during the WebZero hackathon,
+      the project won a prize. I worked on this with my buddy
+      <a href="https://www.linkedin.com/in/nicolamiotto/">Nicola</a>.
+    </li>
+
     <li>
       <a href="https://neokingdom.org/">Neokingdom DAO</a> was a legal and technical
       framework to incorporate DAOs in Europe. I worked on this for ~4 years, working
