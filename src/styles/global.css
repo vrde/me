@@ -1,0 +1,66 @@
+:root {
+  /* Fixed two-color theme, matching the /ai page. (Block-driven color cycling was
+     removed for now (it fought the canvas); can be reintroduced later. */
+  --bg: #242424;
+  --ink: #e8e8e4;
+  --accent: #ad4baf;
+  --link: #e765ea;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: monospace;
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: 666px;
+  padding: 0 16px 80px;
+}
+
+a {
+  color: var(--link);
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.1rem;
+}
+
+section {
+  margin: 36px 0 0;
+}
+
+ul {
+  padding: 1rem;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+pre {
+  overflow: auto;
+}

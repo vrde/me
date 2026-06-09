@@ -1,3 +1,9 @@
+---
+layout: ../../layouts/Base.astro
+title: "Zero carbon providers"
+description: "Providers (VPS, hosting, email) that run on renewable energy."
+---
+
 # Zero carbon infrastructure
 
 This list is a collection of providers (VPS, hosting, email, etc.) that run their business on renewable energy and have a commitment towards the environment.

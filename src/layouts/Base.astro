@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+
+// Works both as a component layout (<Base title=... />) and as a markdown page layout
+// (frontmatter is passed under Astro.props.frontmatter).
+const props = Astro.props.frontmatter ?? Astro.props;
+const title = props.title ?? "Alberto Granzotto";
+const description =
+  props.description ??
+  "Creative developer. Art and products built on two decades of engineering.";
+const ogImage = "https://www.granzotto.net/alberto.jpg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.granzotto.net/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Self-hosted Umami analytics (same instance as the /ai page) -->
+    <script
+      defer
+      src="https://parmigiano.usefulsystems.net/fetch"
+      data-website-id="7521cb17-7a96-44c1-a4ea-8ccefc189985"></script>
+  </head>
+  <body>
+    <slot name="full-bleed" />
+    <main class="wrap">
+      <slot />
+    </main>
+  </body>
+</html>

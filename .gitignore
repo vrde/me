@@ -1,4 +1,6 @@
-# public/bundle.*
+# Astro build output
+dist/
+.astro/
 
 # Logs
 logs

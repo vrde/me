@@ -1,0 +1,229 @@
+---
+const {
+  src = "/alberto.jpg",
+  alt = "Alberto Granzotto",
+  dark = "#242424",
+  light = "#ad4baf",
+} = Astro.props;
+---
+
+<section class="hero" id="hero" data-src={src} data-dark={dark} data-light={light}>
+  <div class="hero-photo">
+    <canvas id="dither-canvas" role="img" aria-label={alt}></canvas>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-headline">
+      <div class="hero-headline-inner"><slot name="headline" /></div>
+    </div>
+    <div class="hero-who">
+      <div class="hero-who-inner"><slot name="who" /></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Copied from the /ai hero: a full-height photo sticky on the right ~55%, with text
+     panels scrolling over the left. The photo pins and resolves coarse->fine as you scroll
+     the panels, then releases. Full-width on mobile. */
+  .hero {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .hero-photo {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+  }
+  #dither-canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+  }
+  .hero-scroll {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-top: -100vh; /* pull up over the sticky photo */
+    /* legibility for the text where it overlaps the photo (mobile / full-width) */
+    text-shadow:
+      0 1px 10px rgba(0, 0, 0, 0.85),
+      0 0 4px rgba(0, 0, 0, 0.7);
+  }
+  .hero-headline {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 33vh;
+  }
+  .hero-headline-inner {
+    padding: 1.5rem 2rem 1.5rem 0;
+    max-width: 460px;
+  }
+  .hero-who {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+  }
+  .hero-who-inner {
+    padding: 1rem 2rem 1rem 0;
+    max-width: 460px;
+  }
+  .hero::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  @media (max-width: 700px) {
+    .hero {
+      padding: 0;
+    }
+    #dither-canvas {
+      width: 100%;
+    }
+    .hero-headline {
+      padding-bottom: 20vh;
+    }
+    .hero-headline-inner,
+    .hero-who-inner {
+      padding: 1rem;
+      max-width: 100%;
+    }
+    .hero-who {
+      min-height: 80vh;
+      padding-bottom: 0;
+    }
+  }
+</style>
+
+<script>
+  // Ordered (Bayer 8x8) dithering, ported verbatim from the /ai hero. Canvas fills its
+  // container (right 55% on desktop, full width on mobile); on resize it re-reads
+  // offsetWidth/Height and rebuilds, exactly like /ai. Two fixed colors from data attributes.
+
+  const BAYER_8 = [
+    0, 32, 8, 40, 2, 34, 10, 42, 48, 16, 56, 24, 50, 18, 58, 26, 12, 44, 4, 36, 14, 46, 6,
+    38, 60, 28, 52, 20, 62, 30, 54, 22, 3, 35, 11, 43, 1, 33, 9, 41, 51, 19, 59, 27, 49, 17,
+    57, 25, 15, 47, 7, 39, 13, 45, 5, 37, 63, 31, 55, 23, 61, 29, 53, 21,
+  ].map((v) => v / 63);
+
+  const CELL_MAX = 32; // coarse at the top
+  const CELL_MIN = 2; // fully resolved when scrolled
+
+  const hero = document.getElementById("hero");
+  const canvas = /** @type {HTMLCanvasElement | null} */ (
+    document.getElementById("dither-canvas")
+  );
+
+  if (hero && canvas) {
+    const ctx = canvas.getContext("2d");
+    const dark = hero.dataset.dark || "#242424";
+    const light = hero.dataset.light || "#ad4baf";
+
+    let luminance = null; // full-res luminance 0–1
+    let W;
+    let H;
+    let lastCellSize = -1;
+
+    function initCanvas() {
+      W = canvas.offsetWidth;
+      H = canvas.offsetHeight;
+      canvas.width = W;
+      canvas.height = H;
+    }
+
+    function buildLuminance() {
+      const tmp = document.createElement("canvas");
+      tmp.width = W;
+      tmp.height = H;
+      const tc = tmp.getContext("2d");
+
+      // cover crop, anchor top center
+      const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+      const sw = W / scale;
+      const sh = H / scale;
+      const sx = (img.naturalWidth - sw) / 2;
+      tc.drawImage(img, sx, 0, sw, sh, 0, 0, W, H);
+
+      const raw = tc.getImageData(0, 0, W, H).data;
+
+      luminance = new Float32Array(W * H);
+      for (let i = 0; i < W * H; i++) {
+        luminance[i] = (raw[i * 4] * 0.299 + raw[i * 4 + 1] * 0.587 + raw[i * 4 + 2] * 0.114) / 255;
+      }
+    }
+
+    function render(cellSize) {
+      if (!luminance || !ctx) return;
+
+      const cols = Math.ceil(W / cellSize);
+      const rows = Math.ceil(H / cellSize);
+
+      ctx.clearRect(0, 0, W, H);
+
+      for (let gy = 0; gy < rows; gy++) {
+        for (let gx = 0; gx < cols; gx++) {
+          const x0 = gx * cellSize;
+          const y0 = gy * cellSize;
+          const x1 = Math.min(x0 + cellSize, W);
+          const y1 = Math.min(y0 + cellSize, H);
+
+          let sum = 0;
+          let count = 0;
+          for (let py = y0; py < y1; py++) {
+            for (let px = x0; px < x1; px++) {
+              sum += luminance[py * W + px];
+              count++;
+            }
+          }
+          const brightness = sum / count;
+
+          const threshold = BAYER_8[(gy % 8) * 8 + (gx % 8)];
+          const adjusted = Math.max(0, Math.min(1, brightness + (threshold - 0.5) * 0.5));
+
+          ctx.fillStyle = adjusted < 0.5 ? dark : light;
+          ctx.fillRect(x0, y0, cellSize, cellSize);
+        }
+      }
+    }
+
+    function onScroll() {
+      const rect = hero.getBoundingClientRect();
+      const scrollable = hero.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const rawProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+      const progress = Math.min(rawProgress * 1.43, 1); // resolve 30% earlier
+
+      const cellSize = Math.max(CELL_MIN, Math.round(CELL_MAX - progress * (CELL_MAX - CELL_MIN)));
+      if (cellSize !== lastCellSize) {
+        render(cellSize);
+        lastCellSize = cellSize;
+      }
+    }
+
+    function onResize() {
+      initCanvas();
+      buildLuminance();
+      lastCellSize = -1;
+      onScroll();
+    }
+
+    const img = new Image();
+    img.onload = () => {
+      initCanvas();
+      buildLuminance();
+      render(CELL_MAX);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+    };
+    img.src = hero.dataset.src || "/alberto.jpg";
+  }
+</script>
